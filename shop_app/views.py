@@ -5,7 +5,8 @@ from django.contrib.auth import login, authenticate
 
 from shop_app.models import Consumer, Medicine, UserType
 # Create your views here.
-
+def demo(request):
+    return render(request,'index.html')
 class IndexView(TemplateView):
     template_name = 'index.html'
     def get_context_data(self, **kwargs):
