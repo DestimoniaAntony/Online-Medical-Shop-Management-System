@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Report</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>View Medicine Sheet</h3>
+                        {% comment %} <span class="d-block m-t-5">use class <code>table-hover</code> inside table element</span> {% endcomment %}
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Medicine Name</th>
+                                        {% comment %} <th>Image</th> {% endcomment %}
+                                        <th>Unit Price</th>
+                                        <th>Available Quantity</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in rm %}
+                                    <tr>
+                                        <td>{{i.med_name}}</td>
+                                        {% comment %} <td><img width="0px" height="100px" src="{{ i.image.url}}"></td> {% endcomment %}
+                                        <td>{{i.price}}</td>
+                                        <td>{{i.Tquantity}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
+        {% comment %} <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>View Medicine Sheet</h3>
+                        {% comment %} <span class="d-block m-t-5">use class <code>table-hover</code> inside table element</span> 
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Medicine Name</th>
+                                        <th>Image</th>
+                                        <th>Price</th>
+                                        <th>Available Qnty</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in rm %}
+                                    <tr>
+                                        <td>{{i.id}}</td>
+                                        <td>{{i.med_name}}</td>
+                                        <td><img width="50px" height="100px" src="{{ i.image.url}}"></td>
+                                        <td>{{i.price}}</td>
+                                        <td>{{i.Tquantity}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> {% endcomment %}
+

@@ -1,0 +1,62 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Pharmacy</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Consumer</a></li>
+                            <li class="breadcrumb-item"><a href="#!">View consumers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>View Pharmacy Sheet</h3>
+                        {% comment %} <span class="d-block m-t-5">use class <code>table-hover</code> inside table element</span> {% endcomment %}
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>Consumer Name</th>
+                                        <th>Shop Name</th>
+                                        <th>Medicine</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for i in completed_order %}
+                                    <tr>
+                                        <td>{{i.consumer.user.first_name}}</td>
+                                        <td>{{i.pharmacy.phar_name}}</td>
+                                        <td><img width="150px" height="50px"  src="{{ i.medicine.image.url}}"><br>{{i.medicine.med_name}}</td>
+                                        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock  %}

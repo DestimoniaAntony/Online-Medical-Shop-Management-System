@@ -1,0 +1,84 @@
+{% extends 'admin/base.html'%}
+{% load static %}
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+    
+
+<!-- [ Main Content ] start -->
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <div class="page-header-title">
+                            <!-- <h5 class="m-b-10">Bootstrap Basic Tables</h5> -->
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#!">Feedback</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Contextual-table ] start -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Feedback Lists</h5>
+                    <!-- <span class="d-block m-t-5">For Make row Contextual add Contextual class like <code>.table-success</code> in <code> tr tag</code> and For cell add Contextual class in <code> td or th tag</code> .</span> -->
+                </div>
+                <div class="card-body table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Customer Name</th>
+                                    <th>Service Rating</th>
+                                    <th>Messages </th>
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in viewfb %} 
+                                <tr class="table-success">
+                                    <td>{{i.consumer.user.first_name}}</td>
+                                    <td>{{i.service}}</td>
+                                    <td>{{i.message}}</td>
+                                    
+                                    <!-- <td>{{i.id}}</td>
+                                    <td>{{i.public_user.public_user.first_name}}</td>
+                                    <td>{{i.med_name}}</td>
+                                    <td>{{i.quantity}}</td>
+                                    <td>{{i.price}}</td> -->
+                                    
+                                    <!-- <td><a href="approve?id={{ i.id}}"><button class=" btn btn-success">Approve</button></a></td>
+
+                                    <td><a href="reject?id={{ i.doctor_id}}"><button class=" btn btn-danger">Reject</button></a></td> -->
+
+                                </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Contextual-table ] end -->
+        </div>
+        </section>
+          <!-- Required Js -->
+    
+{% endblock %}

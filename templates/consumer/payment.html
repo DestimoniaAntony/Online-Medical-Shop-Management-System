@@ -1,0 +1,122 @@
+{% extends "consumer/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-5">
+            <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span>
+            <strong class="text-black">Checkout</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+<div class="container">
+    <h3 style="color:red">Payment through any cards are acceptable</h3>
+    <br>
+    <div class="row">
+        <div class="col-xs-8 col-md-6 col-md-offset-4">
+            <div class="container">
+                <div class="panel-heading">
+                    <div class="row">
+                        <h3 class="text-center"></h3>
+                        <img class="img-responsive cc-img" src="http://prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+                    </div>
+                </div>
+                <br><br>
+                <div class="container">
+                    <form method="post" action="chpayment">
+                        	{% csrf_token %}
+                        <h4>Payable Amount:{{asz}}</h4>
+                        <br>
+                        <div class="row">
+                            <div class="col-xl-12 col-md-7">
+                                <div class="form-group">
+                                    <label>CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="xxxx xxxx xxxx xxxx" required pattern="[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}" />
+                                        <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-xs-10 col-md-7">
+                                <div class="form-group">
+                                    <label><span class="visible-xs-inline">EXPIRATION </span> DATE</label>
+                                    <input type="tel" class="form-control" placeholder="MM / YY" required />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label>CV CODE</label>
+                                    <input type="tel" class="form-control" placeholder="xxx" pattern="[0-9]{3}" required />
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-xl-12  col-md-7">
+                                <div class="form-group">
+                                    <label>CARD OWNER</label>
+                                    <input type="text" class="form-control" placeholder="Card Owner Names" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required />
+                                </div>
+                            </div>
+                        </div>
+                </div><br><br>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-7">
+                            <a href="thankyou"> <button class="btn btn-secondary btn-lg btn-block" type="submit">Process payment</button></a>
+                        </div>
+                    </div>
+                </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .cc-img {
+        margin: 0 auto;
+    }
+</style>
+<!-- Credit Card Payment Form - END -->
+
+</div>
+</div>
+
+    <div class="site-section bg-secondary bg-image" style="background-image: url('images/bg_2.jpg');">
+      <div class="container">
+        <div class="row align-items-stretch">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_1.jpg');">
+              <div class="banner-1-inner align-self-center">
+                <h2>Pharma Products</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus rem odio voluptatem.
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <a href="#" class="banner-1 h-100 d-flex" style="background-image: url('images/bg_2.jpg');">
+              <div class="banner-1-inner ml-auto  align-self-center">
+                <h2>Rated by Experts</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ex ad minus rem odio voluptatem.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

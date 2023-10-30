@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="">
+	<meta name="author" content="Phoenixcoded" />
+<!-- Favicon icon -->
+	<link rel="icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon">
+
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	{% comment %} @@if(darktheme== 'true'){ {% endcomment %}
+	<link rel="stylesheet" href="{% static 'assets/css/layout-dark.css' %}">
+{% comment %} } {% endcomment %}
+	{% comment %} @@if(rtltheme== 'true'){ {% endcomment %}
+	<link rel="stylesheet" href="{% static 'assets/css/layout-rtl.css' %}">
+{% comment %} } {% endcomment %}
+	{% comment %} @@include('./layouts/head-bottom-link.html') {% endcomment %}
+
+<!-- [ auth-signin ] start -->
+<div class="auth-wrapper">
+	<div class="auth-content text-center">
+		{% comment %} <img src="{% static 'assets/images/logo.png' %}" alt="" class="img-fluid mb-4"> {% endcomment %}
+		<div class="card borderless">
+			<div class="row align-items-center ">
+				<div class="col-md-12">
+				<form action="" method="POST">
+					{% csrf_token %}
+					<div class="card-body">
+						<h4 style="color:white;" class="mb-3 f-w-400">Signin</h4>
+						<hr>
+						<div class="form-group mb-3">
+							<label for="email">Enter your Registered Email Id</label>
+							<input type="email" class="form-control" name="email" id="email" placeholder="Email address">
+						</div>
+						<div class="form-group mb-4">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" name="password" id="password" placeholder="Password">
+						</div>
+						{% comment %} <div class="custom-control custom-checkbox text-left mb-4 mt-2">
+							<input type="checkbox" class="custom-control-input" id="customCheck1">
+							<label class="custom-control-label" for="customCheck1">Save credentials.</label>
+						</div> {% endcomment %}
+						<button class="btn btn-block btn-primar mb-4">Signin</button>
+						<hr>
+						<p class="mb-0 text-muted">Don’t have an account? <a style="color:white;" href="signup" class="f-w-400">Signup</a></p>
+						<p class="mb-2 text-muted">Back to Home? <a style="color:white;" href="/" class="f-w-400">Home</a></p>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [ auth-signin ] end -->
+
+<!-- Required Js -->
+<script src="{% static 'assets/js/vendor-all.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'assets/js/pcoded.min.js' %}"></script>
+{% comment %} @@include('./layouts/footer-bottom-link.html') {% endcomment %}
+{% comment %} @@if(layouts=='horizontal' || layouts == 'combine'){ {% endcomment %}
+	<script src="{% static 'assets/js/horizontal-menu.js' %}"></script>
+	{% comment %} @@if(sublayouts!='layout9'){ {% endcomment %}
+	<script>
+		(function() {
+			if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {
+				return;
+			}
+			try {
+				window.layoutHelpers.setCollapsed(
+					localStorage.getItem('layoutCollapsed') === 'true',
+					false
+				);
+			} catch (e) {}
+		})();
+		$(function() {
+			$('#layout-sidenav').each(function() {
+				new SideNav(this, {
+					orientation: $(this).hasClass('sidenav-horizontal') ? 'horizontal' : 'vertical'
+				});
+			});
+			$('body').on('click', '.layout-sidenav-toggle', function(e) {
+				e.preventDefault();
+				window.layoutHelpers.toggleCollapsed();
+				if (!window.layoutHelpers.isSmallScreen()) {
+					try {
+						localStorage.setItem('layoutCollapsed', String(window.layoutHelpers.isCollapsed()));
+					} catch (e) {}
+				}
+			});
+		});
+	</script>
+	{% comment %} } {% endcomment %}
+	<script>
+		$("#pcoded").pcodedmenu({
+			themelayout: 'horizontal',
+			MenuTrigger: 'hover',
+			SubMenuTrigger: 'hover',
+		});
+	</script>
+	{% comment %} } {% endcomment %}
+	
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<section class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Assign</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Pharmacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>View Pending Cart</h3>
+                        {% comment %} <span class="d-block m-t-5">use class <code>table-hover</code> inside table element</span> {% endcomment %}
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Consumer</th>
+                                        <th>Medicine</th>
+                                        <th>Image</th>
+                                        <th>Total Qnty</th>
+                                        <th>Required Qnty</th>
+                                        <th>Assign Pharmacy</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in cart %}
+                                    <tr>
+                                        <td>{{i.consumer.user.first_name}}</td>
+                                        <td>{{i.med_name}}</td>
+                                        <td><img width="50px" height="100px" src="{{ i.medicine.image.url}}"></td>
+                                        <td>{{i.Tquantity}}</td>
+                                        <td>{{i.req_qnty}}</td>
+                                        <form action="" method="post">
+                                            {% csrf_token %}
+                                    
+                                        <td>
+                                            <select name="pharmacy">
+                                            {% for a in pharmacy  %}
+                                                <option value="{{a.id}}">{{a.phar_name}} </option>
+                                                {% endfor %}
+                                            <input type="hidden" name="id" value="{{ i.id }}"><button type="submit">Assign</button></td></form>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock  %}

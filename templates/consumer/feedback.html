@@ -1,0 +1,113 @@
+{% extends "consumer/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0">
+            <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> 
+            <strong class="text-black">Feedback</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+        /* Add some basic styling */
+        {% comment %} body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        } {% endcomment %}
+        .containerss {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            /* background-color: #1ff0; */
+            /* box-shadow: 0 0 10px rgba(5, 0, 0, 0.1); */
+            border-radius: 5px;
+        } 
+        h1 {
+            text-align: center;
+            color: black;
+            padding: 20px 0;
+            }
+        
+        .stars {
+            display: flex;
+            justify-content: center;
+        }
+        .stars input {
+            display: none;
+        }
+        .stars label {
+            font-size: 30px;
+            color: #ffd700;
+            cursor: pointer;
+        }
+        .stars label:hover,
+        .stars label:hover ~ label {
+            color: #ffac32;
+        }
+        .stars input:checked ~ label {
+            color: #ffac32;
+        }
+        .message-box {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        .submit-button {
+            display: block;
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+    <div class="containerss">
+        <br>
+        <br>
+        <br>
+        <h1>Feedback Form</h1>
+        <form action action="" method="POST"  enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="rating-label">Rate the service:</div>
+          <br>
+          
+          <label class="radio-label">
+              <input type="radio" name="service" id="bad" value="bad" required> Bad
+          </label>
+          <label class="radio-label">
+              <input type="radio" name="service" id="average" value="average" required> Average
+          </label>
+          <label class="radio-label">
+              <input type="radio" name="service" id="good" value="good" required> Good
+          </label>
+          <label class="radio-label">
+              <input type="radio" name="service" id="excellent" value="excellent" required> Excellent
+          </label>
+          
+          
+<br>
+<br>
+          <textarea class="message-box" name="message" id="message" placeholder="Additional feedback or comments..." required></textarea>
+          <br>
+          <input type="submit" class="submit-button" value="Submit">
+        
+        </form>
+    </div>
+    </div>
+{% endblock %}

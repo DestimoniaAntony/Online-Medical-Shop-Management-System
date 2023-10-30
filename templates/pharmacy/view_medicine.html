@@ -1,0 +1,22 @@
+{% extends "pharmacy/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<div class="row">
+    {% for i in medicine %}
+    <div class="col-sm-6 col-lg-4 text-center item mb-4">
+      <span class="tag">Sale</span>
+      <a href="shop_single?id={{i.id}}"> <img width="150px" height="150px"  src="{{ i.image.url}}"></a>
+      <h3 class="text-dark"><a href="shop_single?id={{i.id}}">{{ i.med_name}}</a></h3>
+      {% comment %} <p class="price"><del>95.00</del> &mdash; $55.00</p> {% endcomment %}
+      <p class="price">${{i.price}} </p>
+      <p>{{i.consume_type}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "pharmacy/base.html" %}
+{% load static %}
+{% block content %}
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3>View Medicine Sheet</h3>
+                {% comment %} <span class="d-block m-t-5">use class <code>table-hover</code> inside table element</span> {% endcomment %}
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Medicine Name</th>
+                                <th>Image</th>
+                                <th>Price</th>
+                                <th>Available Qnty</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in medicine %}
+                            <tr>
+                                <td>{{i.id}}</td>
+                                <td>{{i.med_name}}</td>
+                                <td><img width="100px" height="100px" src="{{ i.image.url}}"></td>
+                                <td>{{i.price}}</td>
+                                <td>{{i.Tquantity}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xl-3 col-md-4">
+                            <a href="report12"> <button class="btn btn-secondary btn-lg btn-block" type="submit">Download</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
